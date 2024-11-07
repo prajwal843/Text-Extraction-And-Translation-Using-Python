@@ -1,0 +1,1 @@
+print(f"Error in language detection: {e}")
