@@ -24,18 +24,13 @@ jobs:
         with:
           python-version: '3.8'
 
-      # Step 3: Install additional system dependencies
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3-dev build-essential
-
-      # Step 4: Upgrade pip and install dependencies
+      # Step 3: Install dependencies with --no-cache-dir and fallback for playsound
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements.txt --no-cache-dir || pip install git+https://github.com/TaylorSMarks/playsound.git
 
-    #   # Step 5: Run tests
-    #   - name: Run tests
-    #     run: pytest
+      # Step 4: Run tests (if applicable)
+      # Uncomment the following if you have tests to run
+      # - name: Run tests
+      #   run: pytest
